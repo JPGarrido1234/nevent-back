@@ -1,0 +1,56 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="fullscreen"></div>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center ion-align-items-center title-row">
+      <ion-col>
+        <ion-label>
+          <h1>Estás a punto de disfrutar de una experiencia única</h1>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center ion-align-items-center actions-row">
+      <ion-col>
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col>
+            <ion-item lines="none">
+              <ion-label>
+                <p>¿Ya tienes cuenta? Haz <a [routerLink]="['./login']">Log-in</a></p>
+              </ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col>
+            <ion-button [routerLink]="['./login']" expand="block" shape="round" size="default">
+              Registrate
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col class="no-padding">
+            <ion-row class="ion-justify-content-end ion-align-items-center">
+                <ion-label>
+                  <span>Powered by&nbsp;&nbsp;</span>
+                </ion-label>
+            </ion-row>
+          </ion-col>
+          <ion-col class="no-padding">
+            <ion-row class="ion-justify-content-start ion-align-items-center">
+              <ion-img src="../../assets/images/nevent-white-full.png"></ion-img>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col>
+            <ion-label>
+              <p class="small">Si continuas este proceso estás aceptando nuestros Términos y Condiciones. Los
+                servicios
+                de Nevent están sujetos a nuestra política de privacidad.</p>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,174 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-buttons routerLink="/purchases" slot="start">
+        <ion-icon class="icon_x ion-padding" name="arrow-back-outline"></ion-icon>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title *ngIf="!litle_text" class="ion-text-center ion-custom-title">Detalle de compra</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="handleScroll($any($event))" class="ion-no-padding">
+  <ion-grid *ngIf="purchase">
+    <ion-row class="col_style">
+      <ion-icon class="icon_check" name="checkmark-circle-outline"></ion-icon>
+      <ion-label color="success" *ngIf="purchase.state === 'SUCCEEDED'">{{purchase.state}}</ion-label>
+      <ion-label color="danger" *ngIf="purchase.state === 'FAILED'">{{purchase.state}}</ion-label>
+      <ion-label color="primary" *ngIf="purchase.state !== 'FAILED' && purchase.state !== 'SUCCEEDED'">{{purchase.state}}</ion-label>
+    </ion-row>
+    <ion-row class="row_dos">
+      <ion-col>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label class="text_name">Nombre del evento</ion-label>
+          </ion-col>
+          <ion-col size="12" class="no_padding_top">
+            <ion-label class="label_text">{{ purchase.eventName }}</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label class="text_name">Identificador de la compra</ion-label>
+          </ion-col>
+          <ion-col size="12" class="no_padding_top">
+            <ion-label class="label_text">{{ purchase.id }}</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label class="text_name">Fecha de compra</ion-label>
+          </ion-col>
+          <ion-col size="12" class="no_padding_top">
+            <ion-label class="label_text">{{ purchase.purchasedAt | date : "dd/MM/yyyy HH:mm" }}</ion-label>
+          </ion-col>
+        </ion-row>
+        <!--
+        <ion-row *ngIf="purchase?.totalPrice">
+          <ion-col size="12">
+            <ion-label class="text_name">Importe</ion-label>
+          </ion-col>
+          <ion-col size="12">
+            <ion-label>
+              {{
+                purchase.totalPrice / 100 | currency : "EUR" : "symbol" : "1.2-2"
+              }}
+            </ion-label>
+          </ion-col>  
+        </ion-row>
+        -->
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="unnasignedTickets.length > 0">
+      <ion-col>
+        <ion-row>
+          <ion-col size="12">
+            <ion-label>Entradas sin asignar</ion-label>
+          </ion-col>
+          <ion-col size="12">
+            <ion-label>Asigna tus entradas para poder disfrutarlas</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-card *ngFor="let ticket of unnasignedTickets" class="unnasignedTicket">
+            <ion-card-content>
+              <h2>Ticket identifier</h2>
+              <p>{{ ticket?.ticketId }}</p>
+              <ion-button expand="block" (click)="showAssignationForm(ticket.ticketId)">Asignar</ion-button>
+              <!--<ion-item>
+                  <ion-label>Additional Experiences:</ion-label>
+                  <ion-list>
+                    <ion-item *ngFor="let experience of ticket.experiences">
+                      {{ experience }}
+                    </ion-item>
+                  </ion-list>
+                </ion-item>-->
+            </ion-card-content>
+          </ion-card>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <div class="linea_desglose"></div>
+    <ion-row class="desglose">
+      <ion-col class="ion-no-padding">
+        <ion-row>
+          <ion-col class="ion-no-padding" size="12">
+            <ion-label class="label_desglose">Desglose de compra</ion-label>
+          </ion-col>
+        </ion-row>
+        <!--
+        <ion-row>
+          <ion-col class="ion-no-padding">
+            <ion-label>
+              <h2>Entradas</h2>
+            </ion-label>
+            <ion-item *ngFor="let ticket of purchase?.tickets" lines="none">
+              <ion-label>
+                <h3>Entrada {{ ticket.ticketId }}</h3>
+                <p>Asignada a {{ ticket.ownerEmail }}</p>
+              </ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        -->
+      </ion-col>
+    </ion-row>
+    <ion-row class="desglose">
+      <ion-col class="ion-no-padding top_desglose">
+        <ion-label class="label_title">Experiencias</ion-label>
+        <ion-item *ngFor="let movement of getPurchaseExperiences(purchase)" lines="none">
+          <ion-label>
+            <h3>{{ movement.quantity }}x {{ movement.description }}</h3>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none" *ngIf="getPurchaseExperiences(purchase).length === 0">
+          <ion-label class="text_name_sin">No hay experiencias adicionales</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="desglose">
+      <ion-col class="ion-no-padding top_desglose">
+        <ion-label class="label_title">Productos</ion-label>
+        <ion-item *ngFor="let movement of getPurchaseProducts(purchase)" lines="none">
+          <ion-label>
+            <h3>{{ movement.quantity }}x {{ movement.description }}</h3>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none" *ngIf="getPurchaseProducts(purchase).length === 0">
+          <ion-label class="text_name_sin">No hay productos</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-modal trigger="open-modal">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()">Cancelar</ion-button>
+        </ion-buttons>
+        <ion-title>Reasignar entrada</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <form [formGroup]="assignationForm">
+        <ion-item>
+          <ion-label position="stacked">Correo electrónico</ion-label>
+          <ion-input type="text" placeholder="demo@example.com" fill="outline" formControlName="email"></ion-input>
+        </ion-item>
+      </form>
+      <ion-item lines="none">
+        <ion-label>
+          <p class="important-message">
+            Importante! Esta acción es irreversible. En cuanto reasignes tu
+            entrada, dejarás de tener acceso a ella y sólo podrá ser utilizada
+            por el nuevo fan.
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-button expand="block" (click)="confirm()"
+        [disabled]="!assignationForm.dirty || !assignationForm.valid">Asignar</ion-button>
+    </ion-content>
+  </ng-template>
+</ion-modal>

@@ -1,0 +1,63 @@
+<ion-app>
+  <ion-router-outlet></ion-router-outlet>
+  <ion-modal #modal>
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Accede más rápido</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="modal.dismiss()">
+              <ion-icon name="close-outline"></ion-icon
+            ></ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-no-padding">
+        <ion-item lines="none">
+          <ion-label>
+            <h2>Crea tu contraseña</h2>
+          </ion-label>
+        </ion-item>
+        <form>
+          <ion-list mode="md">
+            <ion-item lines="none" class="datos_basicos">
+              <ion-input
+                id="pw1"
+                [(ngModel)]="password"
+                type="password"
+                label="Contraseña"
+                label-placement="floating"
+              ></ion-input>
+            </ion-item>
+            <ion-item lines="none" class="datos_basicos">
+              <ion-input
+                id="pwd2"
+                [(ngModel)]="passwordConfirmation"
+                type="password"
+                label="Repite la contraseña"
+                label-placement="floating"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item *ngIf="password !== passwordConfirmation">
+              <ion-label>
+                <p class="important-message">Las contraseñas no coinciden</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </form>
+        <ion-button
+          class="ion-padding"
+          expand="block"
+          shape="round"
+          (click)="createPassword()"
+          [disabled]="password === '' || password !== passwordConfirmation"
+          >Crear contraseña</ion-button
+        >
+        <ion-button expand="block" fill="none" (click)="dismissForever()"
+          >Lo haré luego</ion-button
+        >
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-app>

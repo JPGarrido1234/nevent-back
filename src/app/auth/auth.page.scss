@@ -1,0 +1,85 @@
+ion-content {
+    color: white;
+    overflow: hidden;
+    --overflow: hidden;
+    --background: center / cover url('../../assets/images/fondo_login.png');
+
+    div.fullscreen {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(#A9937B, #000000);
+        opacity: 0.7;
+    }
+
+    h1 {
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 45px;
+    }
+
+
+    ion-item {
+        --background: transparent;
+    }
+
+    ion-label {
+        text-align: center;
+    }
+
+    p {
+        color: white;
+        font-size: 16px;
+        font-weight: 400;
+
+        a {
+            color: var(--ion-color-secondary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        &.small {
+            color: #B7B7B7;
+            font-size: 10px;
+            line-height: 13px;
+            font-weight: 400;
+        }
+    }
+
+    span {
+
+        color: #B7B7B7;
+    }
+}
+
+ion-grid {
+    height: 100%;
+
+    ion-row {
+        &.title-row {
+            height: 60%;
+        }
+
+        &.actions-row {
+            height: 40%;
+
+            ion-img {
+                height: 12px;
+                display: inline-block;
+            }
+
+        }
+    }
+}
+
+ion-button {
+    --padding-top: 18px;
+    --padding-bottom: 18px;
+}
+
+ion-col.no-padding {
+    padding: 0;
+}

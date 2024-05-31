@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons routerLink="/profile" slot="start">
+      <ion-icon class="icon_x ion-padding" name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title *ngIf="litle_text" class="ion-text-center ion-custom-title">Perfil público</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [scrollEvents]="true" (ionScroll)="handleScroll($any($event))" class="ion-no-padding">
+  <ion-label [ngClass]="{'title_show':!litle_text, 'title_no_show': litle_text}" class="ion-padding text_title_header">Perfil público</ion-label>
+  <p class="parraf_p">Datos visibles para otros usuarios</p>
+  <form [formGroup]="profileForm">
+    <ion-list mode="md">
+      <ion-item class="datos_basicos" lines="none">
+        <ion-input label="Headline" label-placement="floating" formControlName="headline"></ion-input>
+      </ion-item>
+      <ion-item class="datos_basicos" lines="none">
+        <ion-input label="LinkedIn" label-placement="floating" formControlName="linkedin"></ion-input>
+      </ion-item>
+      <ion-item class="datos_basicos" lines="none">
+        <ion-input label="Twitter" label-placement="floating" formControlName="twitter"></ion-input>
+      </ion-item>
+      <ion-item class="datos_basicos" lines="none">
+        <ion-input label="Instagram" label-placement="floating" formControlName="instagram"></ion-input>
+      </ion-item>
+      <!--<ion-item class="datos_basicos">
+      <ion-input
+        class="custom"
+        label="Tiktok"
+        label-placement="floating"
+        fill="solid"
+        formControlName="tiktok"
+      ></ion-input>
+    </ion-item>
+    <ion-item class="datos_basicos">
+      <ion-input
+        class="custom"
+        label="Youtube"
+        label-placement="floating"
+        fill="solid"
+        formControlName="youtube"
+      ></ion-input>
+    </ion-item>-->
+    </ion-list>
+
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button class="btn_profile" [disabled]="!profileForm.dirty" (click)="updateProfile()" shape="round"
+      expand="block">Guardar</ion-button>
+  </ion-toolbar>
+</ion-footer>

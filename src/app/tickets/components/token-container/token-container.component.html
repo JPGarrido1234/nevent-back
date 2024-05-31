@@ -1,0 +1,94 @@
+<div class="fondo_fijo_token">
+  <div class="fondo_token">
+    <div class="flex justify-content-center transparencia2">
+      <ion-row class="ion-justify-content-center ion-align-items-center">
+        <ion-col (click)="setOpenn(true)" *ngIf="!fallbackQR; else fallbackToken" size="12"
+          [ngClass]="{ hidden: scanned && passphrase }" class="image-container">
+          <div *ngIf="isTokenLoading" class="loading-container">
+
+          </div>
+
+          <img *ngIf="tokenUrls; else fallbackToken" class="responsive-image" [hidden]="isTokenLoading"
+            [src]="tokenUrls['720']" [srcset]="
+              tokenUrls['240'] +
+              ' 240w, ' +
+              tokenUrls['320'] +
+              ' 320w, ' +
+              tokenUrls['480'] +
+              ' 480w, ' +
+              tokenUrls['640'] +
+              ' 640w, ' +
+              tokenUrls['720'] +
+              ' 720w'
+            " sizes="(max-width: 260px) 200px,
+                (max-width: 320px) 280px,
+                (max-width: 480px) 440px,
+                (max-width: 640px) 600px,
+                100vw" alt="Token Image" (load)="onImageLoad()" />
+        </ion-col>
+        <ng-template #fallbackToken>
+          <ion-col size="8" [ngClass]="{ hidden: scanned && passphrase }" (click)="setOpenn(true)">
+            <qrcode [qrdata]="token.validationUrl" [width]="150" colorLight="#000000ff" colorDark="#ffffffff"
+              imageSrc="/assets/images/nevent-logo-reverse-sm.webp" [errorCorrectionLevel]="'M'"></qrcode>
+            <ion-label>
+              <p>{{ token._id }}</p>
+            </ion-label>
+          </ion-col>
+        </ng-template>
+        <ion-col size="8" [ngClass]="{ visible: scanned && passphrase }" *ngIf="passphrase">
+          <p>La contraseña para acceder al evento es:</p>
+          <h3 class="passphrase">{{ passphrase }}</h3>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</div>
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpenn(false)">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-no-padding fondo_modal">
+      <ion-grid fixed>
+        <ion-row size="12">
+          <ion-col size="12" class="image-container">
+            <div class="fondo_fijo">
+              <div class="fondo_login">
+                <img *ngIf="tokenUrls; else fallbackToken" [hidden]="isTokenLoading" [src]="tokenUrls['720']" [srcset]="
+                    tokenUrls['240'] +
+                    ' 240w, ' +
+                    tokenUrls['320'] +
+                    ' 320w, ' +
+                    tokenUrls['480'] +
+                    ' 480w, ' +
+                    tokenUrls['640'] +
+                    ' 640w, ' +
+                    tokenUrls['720'] +
+                    ' 720w'
+                  " sizes="(max-width: 240px) 200px,
+                    (max-width: 320px) 280px,
+                    (max-width: 480px) 440px,
+                    (max-width: 640px) 600px,
+                    100vw" alt="Token Image" class="responsive-image2" (load)="onImageLoad()" />
+                <ng-template #fallbackToken>
+                  <qrcode [qrdata]="token.validationUrl" [width]="300" colorLight="#000000ff" colorDark="#ffffffff"
+                    imageSrc="/assets/images/nevent-logo-reverse-sm.webp" [imageHeight]="80" [imageWidth]="80"
+                    [errorCorrectionLevel]="'M'"></qrcode>
+                  <ion-label>
+                    <p>{{ token._id }}</p>
+                  </ion-label>
+                </ng-template>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </ng-template>
+</ion-modal>

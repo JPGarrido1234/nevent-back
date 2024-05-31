@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title *ngIf="litle_text" class="ion-text-center ion-custom-title">Experiencias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="handleScroll($any($event))">
+  <ion-label [ngClass]="{'title_show':!litle_text, 'title_no_show': litle_text}" class="ion-padding text_experiencia">Experiencias</ion-label>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div id="container">
+    <ion-grid *ngIf="next; else noNextEvent">
+      <ion-row>
+        <ion-col>
+          <app-token-card-preview [ticket]="next"></app-token-card-preview>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ng-template #noNextEvent>
+      <div class="ion-padding">
+        <ion-label>
+          <h2>Vaya! No tienes nada a la vista</h2>
+          <p>¿A qué esperas para disfrutar de la siguiente?</p>
+        </ion-label>
+      </div>
+    </ng-template>
+  </div>
+</ion-content>

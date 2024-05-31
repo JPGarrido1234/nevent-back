@@ -1,0 +1,23 @@
+<div (click)="open(ticket._id)" *ngIf="ticket" class="v1_554" [ngStyle]="{
+    'background-image': 'url(' + ticket.event.description.imageUrl + ')'
+  }">
+  <div class="v1_558">
+    <ul style="list-style: none;">
+      <li class="v1_559"><span>{{ ticket.event.description.name }}</span></li>
+      <li class="v1_560">
+        <span>{{ticket.event.venue.startDate | date : "dd MMM yyyy HH:mm"}}</span>
+      </li>
+      <li class="v1_561">
+        <span *ngIf="showLocation === true; else hiddenLocation">
+          {{ticket.event.venue.location.formattedAddress}}
+        </span>
+      </li>
+    </ul>
+  </div>
+
+
+
+  <ng-template #hiddenLocation>
+    <span class="v1_561">Ubicación secreta ({{ timer }})</span>
+  </ng-template>
+</div>

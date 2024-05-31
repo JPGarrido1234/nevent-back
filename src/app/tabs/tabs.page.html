@@ -1,0 +1,24 @@
+<ion-tabs #tabs (ionTabsDidChange)="setCurrentTab()">
+  <ion-tab-bar mode="ios" slot="bottom">
+    <ion-tab-button tab="home">
+      <ion-img *ngIf="selectedTab == 'home'" src="../assets/images/simbolo_blanco.png"></ion-img>
+      <ion-img *ngIf="selectedTab != 'home'" src="../assets/images/simbolo_gris.png"></ion-img>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tickets">
+      <ion-icon aria-hidden="true" name="ticket-outline"></ion-icon>
+      <ion-label>Mis tokens</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="purchases">
+      <ion-icon aria-hidden="true" name="bag-outline"></ion-icon>
+      <ion-label>Compras</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile">
+      <ion-icon aria-hidden="true" name="person-outline"></ion-icon>
+      <ion-label>Perfil</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon class="icon_x ion-padding" name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title *ngIf="litle_text" class="ion-text-center ion-custom-title">Mis compras ({{
+      purchases.length}})</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [scrollEvents]="true" (ionScroll)="handleScroll($any($event))" class="ion-no-padding">
+  <ion-label [ngClass]="{'title_show':!litle_text, 'title_no_show': litle_text}" class="ion-padding text_title_header">Mis compras ({{ purchases.length }})</ion-label>
+  <p class="parraf_p">Estas son las compras que has realizado.</p>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list lines="none" mode="md" *ngIf="purchases && purchases.length>0; else emptyList">
+    <ion-item class="lista_expe" detail="false" *ngFor="let purchase of purchases" href="#"[routerLink]="['/purchases', purchase.id]">
+      <app-purchase-item [purchase]="purchase"></app-purchase-item>
+      <ion-img slot="end" src="../../assets/images/icon_profile_flecha.svg"></ion-img>
+    </ion-item>
+  </ion-list>
+  <ng-template #emptyList>
+    <div class="ion-padding">
+      <ion-label>
+        <h2>Vaya! No has realizado ninguna compra.</h2>
+      </ion-label>
+    </div>
+  </ng-template>
+</ion-content>

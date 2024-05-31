@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancelSetupIntent()">
+        <ion-icon class="icon_x ion-padding" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-toolbar>
+      <ion-title *ngIf="litle_text" class="ion-text-center ion-custom-title">Nuevo método de pago</ion-title>
+    </ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-label *ngIf="!litle_text" class="ion-padding text_experiencia" size="large">Nuevo método de pago</ion-label>
+  <div id="container">
+    <ion-grid>
+      <!--<ion-row>
+        <ion-col>
+          <form action="/" method="post" id="payment-form">
+            <div class="form-row">
+              <div id="card-element">
+              </div>
+
+              <div id="card-errors" role="alert"></div>
+            </div>
+          </form>
+        </ion-col>
+      </ion-row>-->
+      <form action="/" method="post" id="payment-form">
+        <ion-list lines="none">
+          <ion-row>
+            <ion-item class="datos_basicos" lines="none">
+              <ion-label class="ion-text-start">
+                <span class="text_card">Número de tarjeta</span>
+                <div id="card-number-element"></div>
+              </ion-label>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item class="datos_basicos" lines="none">
+              <ion-label>
+                <span class="text_card">Fecha de caducidad</span>
+                <div id="card-expiry-element"></div>
+              </ion-label>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item class="datos_basicos" lines="none">
+              <ion-label>
+                <span class="text_card">CVC</span>
+                <div id="card-cvc-element"></div>
+              </ion-label>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div id="card-number-errors" role="alert"></div>
+              <div id="card-expiry-errors" role="alert"></div>
+              <div id="card-cvc-errors" role="alert"></div>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+      </form>
+    </ion-grid>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button class="btn_profile" type="submit" shape="round" expand="block" (click)="createCard()"
+      [disabled]="creating">
+      Guardar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

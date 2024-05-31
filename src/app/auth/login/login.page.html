@@ -1,0 +1,39 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="fullscreen"></div>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center ion-align-items-center title-row">
+      <ion-col>
+        <ion-label>
+          <h1>Estás a punto de disfrutar de una experiencia única</h1>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center ion-align-items-center form-row">
+      <ion-col>
+        <ion-list [formGroup]="loginForm" mode="md">
+          <ion-item lines="none" class="datos_basicos">
+            <ion-input label="Correo electrónico" type="email" label-placement="floating"
+              formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item lines="none" class="datos_basicos" *ngIf="requestPassword">
+            <ion-input label="Contraseña" label-placement="floating" type="password"
+              formControlName="password"></ion-input>
+          </ion-item>
+          <ion-item lines="none" class="datos_basicos" *ngIf="requestOtp">
+            <ion-input label="Código de verificación" label-placement="floating" formControlName="otp"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center ion-align-items-end actions-row">
+      <ion-col>
+        <ion-button *ngIf="requestPassword" [disabled]="disableResend" fill="clear" expand="full"
+          (click)="resetPassword()">¿Olvidaste la password?</ion-button>
+        <ion-button *ngIf="requestOtp" [disabled]="disableResend" fill="clear" expand="full"
+          (click)="resetPassword()">¿No has recibido el email?</ion-button>
+        <ion-button (click)="requestLogin()" shape="round" expand="full"
+          [disabled]="!loginForm.valid || requestingLogin">Continuar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

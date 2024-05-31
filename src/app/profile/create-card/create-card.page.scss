@@ -1,0 +1,94 @@
+.text_experiencia {
+    color: #FBFBFB;
+    font-family: "Poppins";
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 42px;
+    margin-left: 3%;
+    float: left;
+}
+
+ion-list,
+.parraf_p {
+    width: 100%;
+}
+
+.ios ion-toolbar {
+    --background: #000;
+    color: #FFF;
+    text-align: center;
+}
+
+.md ion-toolbar {
+    text-align: center;
+}
+
+.ios ion-header {
+    backdrop-filter: saturate(180%) blur(20px);
+}
+
+ion-item {
+    ion-label {
+        color: #FBFBFB;
+        font-family: "Poppins";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px;
+        margin-left: 3%;
+
+        .text_card {
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(189, 189, 189, 1);
+        }
+    }
+
+    .label_profile {
+        font-weight: 400;
+    }
+
+    ion-img {
+        margin-right: 3%;
+    }
+}
+
+.datos_basicos {
+    width: 100%;
+    margin-bottom: 24px;
+    height: 74px;
+    margin-left: 5%;
+    margin-right: 5%;
+    border: 1px #FFF solid;
+    border-radius: 15px;
+}
+
+#card-number-element,
+#card-expiry-element,
+#card-cvc-element {
+    color: #FFF;
+    width: 100%;
+    height: 100%;
+    color: rgba(242, 242, 242, 1);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.btn_profile {
+    border-radius: 32px;
+    background: var(--Primario-nevent, #5B7EF2);
+    display: flex;
+    width: auto;
+    height: 55px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 54px;
+}
+
+ion-footer {
+    height: 20%;
+}

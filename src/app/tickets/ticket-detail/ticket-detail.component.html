@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons routerLink="/tickets" slot="start">
+      <ion-icon class="icon_x ion-padding" name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title *ngIf="litle_text" class="ion-text-center ion-custom-title">Mis tokens</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/tickets', ticketId, 'detail']">
+        <ion-icon name="information-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button [routerLink]="['/tickets', ticketId, 'messages']">
+        <ion-icon name="notifications"></ion-icon>
+        <span class="dot" *ngIf="unreadCount > 0"> </span>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="main-content" [fullscreen]="true" [scrollEvents]="true" (ionScroll)="handleScroll($any($event))">
+  <ion-label [ngClass]="{'title_show':!litle_text, 'title_no_show': litle_text}" class="ion-padding text_title_header">Mis tokens</ion-label>
+  <div id="container">
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <div class="ion-padding">
+      <ion-grid>
+        <ion-row *ngIf="ticket?._id" class="ion-align-items-center ion-justify-content-center ion-padding">
+          <ion-col size="12">
+            <app-token-container [token]="ticket" [tokenId]="ticketId"></app-token-container>
+          </ion-col>
+        </ion-row>
+        <app-banner-sponsors [ticketId]="ticketId"></app-banner-sponsors>
+        <app-banner [ticketId]="ticketId"></app-banner>
+      </ion-grid>
+    </div>
+    <div class="ion-no-padding">
+      <app-upgrade-featured [ticketId]="ticketId"></app-upgrade-featured>
+    </div>
+  </div>
+</ion-content>
+<ion-action-sheet trigger="open-action-sheet" [buttons]="actionSheetButtons"
+  (didDismiss)="handleAction($event)"></ion-action-sheet>
+<ion-modal>
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()">Cancelar</ion-button>
+        </ion-buttons>
+        <ion-title>Reasignar entrada</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <form [formGroup]="assignationForm">
+        <ion-item>
+          <ion-label position="stacked">Correo electrónico</ion-label>
+          <ion-input type="text" placeholder="demo@example.com" fill="outline" formControlName="email"></ion-input>
+        </ion-item>
+      </form>
+      <ion-item lines="none">
+        <ion-label>
+          <p class="important-message">
+            Importante! Esta acción es irreversible. En cuanto reasignes tu
+            entrada, dejarás de tener acceso a ella y sólo podrá ser utilizada
+            por el nuevo fan.
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-button expand="block" (click)="confirm()"
+        [disabled]="!assignationForm.dirty || !assignationForm.valid">Reasignar</ion-button>
+    </ion-content>
+  </ng-template>
+</ion-modal>

@@ -1,0 +1,7 @@
+<ion-grid>
+  <ion-row size="12" class="ion-align-items-center ion-justify-content-center">
+    <ion-row class="img_icons" *ngFor="let sponsor of sponsorList$ | async">
+      <ion-img class="icons_sponsors" [src]="sponsor.image"></ion-img>
+    </ion-row>
+  </ion-row>
+</ion-grid>

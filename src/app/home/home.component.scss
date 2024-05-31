@@ -1,0 +1,126 @@
+ion-toolbar,
+ion-content,
+ion-grid,
+ion-list,
+ion-item,
+ion-row {
+    --background: #0B0B0B;
+    background-color: #0B0B0B;
+    font-family: "Poppins";
+}
+
+.text_experiencia {
+    color: #FBFBFB;
+    font-family: "Poppins";
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 42px;
+}
+
+ion-toolbar {
+    color: #FBFBFB;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+ion-card img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+ion-card-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 16px;
+    position: absolute;
+    z-index: 1000;
+    bottom: 0px;
+    left: 12px
+}
+
+ion-card-title {
+    color: #FBFBFB;
+    font-size: 20px;
+}
+
+ion-card-subtitle {
+    color: #E69724;
+    font-size: 11px;
+}
+
+ion-card-content {
+    padding: 16px;
+}
+
+ion-button {
+
+    border-radius: 0;
+    font-weight: bold;
+    margin: 0;
+    padding: 12px;
+    padding-top: 0;
+    width: 50%;
+    transition: background 0.3s ease;
+
+    &.primary {
+        --background: var(--ion-color-primary);
+        --color: #fff;
+
+        &:hover {
+            --background: var(white);
+        }
+    }
+
+    :not(.primary) {
+        &:hover {
+            --background: var(--ion-color-primary-shade);
+        }
+    }
+
+}
+
+.location-icon {
+    font-size: 2rem;
+    margin-right: 8px;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.timer-icon {
+    font-size: 1.5rem;
+    margin-right: 4px;
+    color: var(--ion-color-primary);
+}
+
+.countdown {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--ion-color-primary);
+}
+
+.reveal-date {
+    font-size: 1rem;
+    margin-top: 8px;
+    color: var(--ion-color-medium);
+}
+
+p {
+    color: #BDBDBD;
+}
+
+.title_no_show{
+    visibility: hidden;
+}
+
+.title_show{
+    visibility: visible;
+}

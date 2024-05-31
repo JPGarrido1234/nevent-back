@@ -1,0 +1,40 @@
+.container {
+    margin-top: 10%;
+}
+
+.text_title_header {
+    color: #FBFBFB;
+    font-family: "Poppins";
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 42px;
+    margin-left: 1.4%;
+    padding-top: 5%;
+    display: block;
+}
+
+.ios ion-toolbar {
+    --background: #000;
+    text-align: center;
+}
+
+.md ion-toolbar {
+    text-align: center;
+}
+
+.ios ion-header {
+    backdrop-filter: saturate(180%) blur(20px);
+}
+
+p {
+    color: #BDBDBD;
+}
+
+.title_no_show{
+    visibility: hidden;
+}
+
+.title_show{
+    visibility: visible;
+}

@@ -1,0 +1,83 @@
+ion-chip {
+    border-radius: 15px;
+    border: 1px solid var(--Rosa, #F65AAD);
+    background: var(--Rosa, #F65AAD);
+    width: 102px;
+    height: 18px;
+    color: var(--White, #FFF);
+    font-size: 11px;
+    font-family: 'Poppins';
+
+    ion-avatar {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+h2 {
+    font-weight: 600;
+}
+
+
+.row2_upsilling {
+    padding-top: 1%;
+
+    ion-col {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+
+.row1_upsilling {
+    padding-top: 4%;
+    margin-bottom: 0%;
+}
+
+ion-card {
+    height: 39px;
+    margin: 0;
+}
+
+.box_patrocinado {
+    display: flex;
+    justify-content: space-around;
+}
+
+.patrocinado {
+    margin-left: 5%;
+    margin-right: 5%;
+    color: #BDBDBD;
+    font-family: "Poppins";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-top: 6%;
+    margin-bottom: auto;
+}
+
+.img_patrocinado {
+    width: 24.6px;
+    height: 24px;
+}
+
+.box_mas_menos {
+    display: flex;
+    /*justify-content: end;*/
+    margin-top: -10px;
+}
+
+ion-button {
+    ion-icon {
+        color: white;
+    }
+}
+
+.label_soldout {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(230, 151, 36, 1);
+    width: auto;
+    margin-right: 2em;
+}

@@ -1,0 +1,27 @@
+<ion-label>
+  <span class="eventName">{{ purchase.eventName }}</span>
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col *ngIf="purchase.tickets && purchase.tickets.length > 0" class="ion-no-padding" size="auto">
+          <span class="eventLength">{{ purchase.tickets.length }}</span>
+          <ion-icon class="margin_icon" name="ticket-outline"></ion-icon>
+      </ion-col>
+      <ion-col *ngIf="purchase.experiences && purchase.experiences.length > 0" size="auto" class="ion-no-padding column_icon">
+        <span class="eventLength">{{ purchase.experiences.length }}</span>
+        <ion-icon class="margin_icon" name="arrow-up-outline"></ion-icon>
+      </ion-col>
+      <ion-col *ngIf="purchase.products && purchase.products.length > 0" size="auto" class="ion-no-padding column_icon">
+        <span class="eventLength">{{ purchase.products.length }}</span>
+        <ion-icon class="margin_icon" name="bag-outline"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="auto" class="ion-no-padding">
+        <span class="eventExperience">{{ purchase.totalPrice / 100 | currency : "EUR" : "symbol" : "1.2-2" }}</span>
+      </ion-col>
+      <ion-col class="ion-no-padding" class="width_hour">
+        <span class="eventExperienceHour">{{ purchase.purchasedAt | date : "d MMM y, HH:mm" }}</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-label>

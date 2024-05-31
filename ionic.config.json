@@ -1,0 +1,7 @@
+{
+  "name": "nev-profile-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

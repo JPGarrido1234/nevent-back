@@ -1,0 +1,74 @@
+
+.icons_expe{
+    border-radius: 4px;
+    background: rgba(56, 56, 56, 0.40);
+    backdrop-filter: blur(2px);
+    margin-top: 0%;
+    height: 60px;
+}
+
+ion-card{
+    height: 60px;
+    margin: 0;
+}
+
+.icons_expe{
+    ion-col{
+        height: 100%;
+    }
+}
+
+.img_banner{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+
+
+.label_text{
+    font-size: 14px;
+    display: block;
+    height: fit-content;
+    margin-bottom: auto;
+    margin-top: auto;
+    margin-left: 3%;
+}
+
+.row_label{
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 100%;
+}
+
+.row_label2{
+    height: auto;
+    display: block;
+    margin-top: 10%;
+}
+
+.icons_precio{
+    color:rgba(230, 151, 36, 1);
+    height: 100%;
+    display: block;
+    margin-top: 0%;
+    margin-bottom: 4%;
+}
+
+.icons_precio .desde{
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.icons_precio .precio{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.text_ver_mas{
+    color: rgba(230, 151, 36, 1);
+    text-align: right;
+    font-size: 12px;
+}

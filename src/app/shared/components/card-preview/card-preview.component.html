@@ -1,0 +1,37 @@
+<ion-item lines="none">
+  <ion-thumbnail slot="start">
+    <ion-grid>
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col size="auto">
+          <ion-img [src]="getBrandIcon()" alt="Card Logo"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-thumbnail>
+  <ion-label>
+    <ion-grid>
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <ion-col>
+          <ion-label class="card-number"
+            ><span class="card-dots">···· </span
+            >{{ paymentMethod.card.last4 }}</ion-label
+          >
+        </ion-col>
+        <ion-col size="auto" *ngIf="!text_action">
+          <ion-checkbox></ion-checkbox>
+        </ion-col>
+        <ion-col size="auto" *ngIf="text_action"
+          ><!--  (click)="delete()" -->
+          <ion-button
+            (click)="setOpen()"
+            class="btn_eliminar"
+            size="small"
+            fill="clear"
+          >
+            Eliminar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-label>
+</ion-item>

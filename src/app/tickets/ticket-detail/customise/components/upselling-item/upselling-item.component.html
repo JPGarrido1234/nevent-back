@@ -1,0 +1,76 @@
+<ion-grid style="padding: 0" fixed>
+  <ion-row class="ion-justify-content-start chip-row" *ngIf="item.available>0 && item.available<10">
+    <ion-col size="12" class="chip-col">
+      <ion-chip>
+        <ion-avatar>
+          <ion-icon name="flame-outline"></ion-icon>
+        </ion-avatar>
+        <ion-label>Están volando!</ion-label>
+      </ion-chip>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-justify-content-between ion-align-items-start row1_upsilling">
+    <ion-col>
+      <ion-label>
+        <h2>{{ item.name }}</h2>
+        <p *ngIf="item?.description" [innerHTML]="item.description"></p>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row size="auto" class="row2_upsilling">
+    <ion-col class="col_upsilling" size="3">
+      <ion-label class="upsilling_label">
+        {{ item.displayPrice / 100 | currency : "EUR" : "symbol" : "1.2-2" }}
+      </ion-label>
+    </ion-col>
+    <ion-col size="6">
+      <div class="box_patrocinado" *ngIf="item.sponsor && item.sponsor.image">
+        <ion-label class="patrocinado">patrocinado por </ion-label>
+        <ion-img class="img_patrocinado" [src]="item.sponsor.image"></ion-img>
+      </div>
+    </ion-col>
+    <ion-col size="3" class="ion-no-padding" *ngIf="item.allowMultiple; else singleSelection">
+      <ion-row class="ion-align-items-center ion-justify-content-end btn_upsilling"
+        *ngIf="item.available > 0; else soldOut">
+        <div class="div_botons">
+          <ion-button [disabled]="quantity <= 0" slot="icon-only" icon="pi pi-minus" fill="clear"
+            (click)="reduceElement()">
+            <ion-icon name="remove-circle-outline" size="large"></ion-icon>
+          </ion-button>
+        </div>
+        <div>
+          <ion-label>
+            <h5 class="flex-none">{{ quantity }}</h5>
+          </ion-label>
+        </div>
+        <div style="width: 30%;">
+          <ion-button *ngIf="item.available > 0" slot="icon-only" [disabled]="quantity >= item.available"
+            icon="pi pi-plus" fill="clear" (click)="increaseElement()">
+            <ion-icon slot="start" name="checkmark-circle-outline" size="large"></ion-icon></ion-button>
+        </div>
+      </ion-row>
+      <ng-template #soldOut>
+        <ion-row size="12" style="display: flex; justify-content: end">
+          <ion-label class="label_soldout">SOLD OUT</ion-label>
+        </ion-row>
+      </ng-template>
+    </ion-col>
+    <ng-template #singleSelection>
+      <ion-col size="3" class="ion-no-padding">
+        <ion-row style="display: flex; justify-content: end">
+          <div *ngIf="quantity >= item.available">
+            <ion-label class="label_soldout">SOLD OUT</ion-label>
+          </div>
+          <div *ngIf="quantity < item.available">
+            <ion-button id="selectButton" slot="icon-only" [disabled]="quantity >= item.available" fill="clear"
+              (click)="selectElement()">
+              <ion-icon name="add-circle" size="large" *ngIf="quantity === 0"></ion-icon>
+              <ion-icon name="checkmark-circle" size="large" *ngIf="quantity > 0"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-row>
+
+      </ion-col>
+    </ng-template>
+  </ion-row>
+</ion-grid>

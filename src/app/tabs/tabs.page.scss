@@ -1,0 +1,28 @@
+ion-img {
+    height: 20px;
+}
+
+ion-label {
+    font-size: 10px;
+}
+
+.tam_ticket {
+    width: 32px;
+    height: 32px;
+}
+
+ion-tab-button {
+    --color-selected: white;
+    --color-focused: #3B3B3B;
+    --color: #3B3B3B;
+
+    ion-icon {
+        color: #3B3B3B;
+    }
+
+    &.tab-selected {
+        ion-icon {
+            color: white;
+        }
+    }
+}

@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title *ngIf="litle_text" class="ion-text-center ion-custom-title">Mis tokens ({{ tickets.length }})</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="handleScroll($any($event))">
+  <ion-label [ngClass]="{'title_show':!litle_text, 'title_no_show': litle_text}" class="ion-padding text_title_header">Mis tokens ({{ tickets.length }})</ion-label>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="container" id="container" *ngIf="tickets && tickets.length>0; else emptyList">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-padding">
+          <app-token-card-preview *ngFor="let token of tickets" [ticket]="token"></app-token-card-preview>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="ion-padding">
+      <ion-label>
+        <p>
+          ¿No encuentras tu entrada? Revisa las compras que has realizado en la
+          sección "Compras"
+        </p>
+      </ion-label>
+    </div>
+  </div>
+  <ng-template #emptyList>
+    <div class="ion-padding">
+      <ion-label>
+        <h2>Vaya! No tienes ningún token.</h2>
+        <p>¿A qué esperas para vivir tu próxima experiencia?</p>
+      </ion-label>
+    </div>
+  </ng-template>
+</ion-content>

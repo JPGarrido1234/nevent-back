@@ -1,0 +1,99 @@
+ion-chip {
+    border-radius: 15px;
+    border: 1px solid var(--Rosa, #F65AAD);
+    background: var(--Rosa, #F65AAD);
+    width: 102px;
+    height: 18px;
+    color: var(--White, #FFF);
+    font-size: 11px;
+    font-family: 'Poppins';
+
+    ion-avatar {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+.col_upsilling {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.row2_upsilling {
+    padding-top: 0%;
+}
+
+.row1_upsilling {
+    margin-bottom: 0%;
+}
+
+.upsilling_label {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.box_patrocinado {
+    display: flex;
+    justify-content: space-around;
+}
+
+h2 {
+    font-weight: 600;
+}
+
+
+.patrocinado {
+    margin-left: 5%;
+    margin-right: 5%;
+    color: #BDBDBD;
+    font-family: "Poppins";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-top: 6%;
+    margin-bottom: auto;
+}
+
+.btn_upsilling {
+    display: flex;
+    /*justify-content: end;*/
+    margin-top: -2px;
+    margin-right: 19%;
+}
+
+.img_patrocinado {
+    width: 24.6px;
+    height: 24px;
+}
+
+ion-button {
+    ion-icon {
+        color: white;
+    }
+}
+
+.label_soldout {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(230, 151, 36, 1);
+    width: auto;
+    margin-right: 2em;
+}
+
+ion-chip {
+    width: auto;
+
+    ion-icon {
+        height: 11px;
+    }
+}
+
+.div_botons{
+    width: 50%; 
+    display: flex; 
+    justify-content: center;
+}

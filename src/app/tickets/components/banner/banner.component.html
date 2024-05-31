@@ -1,0 +1,27 @@
+<ion-grid *ngIf="banner$ | async as banner">
+  <ion-row
+    (click)="onFeaturedClick(banner)"
+    [routerLink]="['/tickets', ticketId, 'customise']"
+    class="icons_expe"
+    size="12"
+  >
+    <ion-col class="ion-no-padding" size="3">
+      <ion-card>
+        <ion-img class="img_banner" [src]="banner.image"></ion-img>
+      </ion-card>
+    </ion-col>
+    <ion-col size="7" class="ion-text-left ion-align-items-center">
+      <ion-row class="row_label">
+        <ion-label class="label_text">{{ banner.name }}</ion-label>
+      </ion-row>
+    </ion-col>
+    <ion-col class="icons_precio text_ver_mas" size="2">
+      <div><ion-label class="desde">Desde</ion-label></div>
+      <div>
+        <ion-label class="precio">{{
+          banner.price / 100 | currency : "EUR" : "symbol" : "1.0-0"
+        }}</ion-label>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>

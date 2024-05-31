@@ -1,0 +1,153 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import '@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200&display=swap');
+
+body {
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+}
+
+ion-button {
+  border-radius: 14px;
+}
+
+ion-icon {
+  color: white;
+  width: 24px;
+  height: 24px;
+}
+
+ion-input {
+
+  .input-wrapper {
+    border: 1px solid white;
+    border-radius: 8px !important;
+    padding-left: 1em !important;
+    padding-right: 1em !important;
+  }
+
+  div.label-text-wrapper {
+    font-size: 14px;
+    color: #BDBDBD;
+  }
+}
+
+ion-alert.custom-alert {
+  --backdrop-opacity: 0.7;
+  --background: hsl(0, 0%, 100%);
+  color: rgba(0, 0, 0, 1) !important;
+  width: 100%;
+}
+
+.custom-alert {
+  text-align: center;
+
+  .alert-wrapper {
+    display: block;
+    margin-top: auto;
+    margin-bottom: 5%;
+    max-width: fit-content;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
+    border-radius: 14px;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    .alert-title {
+      text-align: center;
+      color: rgba(0, 0, 0, 1) !important;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .alert-message {
+      color: rgba(130, 130, 130, 1);
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+}
+
+
+.custom-alert .alert-button-group {
+  padding: 8px;
+  display: grid;
+  justify-content: center;
+}
+
+button.alert-button.alert-button-confirm {
+  color: rgba(189, 189, 189, 1);
+  text-transform: none;
+  font-size: 14px;
+  font-weight: 600;
+
+}
+
+button.alert-button.alert-button-cancel {
+  color: rgba(230, 151, 36, 1);
+  text-transform: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.md button.alert-button.alert-button-confirm {
+  border-radius: 4px;
+}
+
+.ios .custom-alert button.alert-button {
+  border: 0.55px solid rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.2);
+}
+
+.ios button.alert-button.alert-button-cancel {
+  border-right: 0;
+  border-bottom-left-radius: 13px;
+  border-top-left-radius: 13px;
+}
+
+.ios button.alert-button.alert-button-confirm {
+  border-bottom-right-radius: 13px;
+  border-top-right-radius: 13px;
+  color: #E69724;
+  font-weight: 600;
+}
+
+ion-label.label_text_title {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+ion-title.ion-custom-title {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  --color: white;
+}

@@ -1,0 +1,56 @@
+<ion-grid *ngIf="item">
+  <ion-row>
+    <ion-col size="2">
+      <ion-card>
+        <ion-img *ngIf="item.images" [src]="item.images[0]"></ion-img>
+        <ion-img
+          *ngIf="!item.images"
+          src="../../../../assets/images/default-item.svg"
+        ></ion-img>
+      </ion-card>
+    </ion-col>
+    <ion-col size="9">
+      <ion-row>
+        <ion-label class="label_name">{{ item.name }}</ion-label>
+      </ion-row>
+      <ion-row>
+        <ion-label
+          mode="md"
+          class="label_description"
+          [innerHTML]="item.description"
+        ></ion-label>
+      </ion-row>
+      <ion-row>
+        <ion-label mode="md" class="label_quantity"
+          >{{ item.quantity }} unidades</ion-label
+        >
+      </ion-row>
+      <ion-row>
+        <div
+          *ngIf="
+            item.type === 'product' && item.quantity !== item.deliveredCount
+          "
+          style="display: flex; justify-content: space-around"
+        >
+          <ion-label class="error-text">
+            Faltan {{ item.quantity - item.deliveredCount }} por recoger
+          </ion-label>
+        </div>
+      </ion-row>
+    </ion-col>
+    <ion-col size="1" class="col_icon">
+      <ion-label
+        *ngIf="item.quantity === item.deliveredCount; else notDelivered"
+      >
+        <p>Recogido</p>
+      </ion-label>
+      <ng-template #notDelivered> </ng-template>
+      <ion-icon
+        *ngIf="item.type === 'product' && item.quantity !== item.deliveredCount"
+        size="large"
+        class="error-text"
+        name="alert-circle-outline"
+      ></ion-icon>
+    </ion-col>
+  </ion-row>
+</ion-grid>

@@ -1,0 +1,31 @@
+<ion-grid>
+  <ion-row size="12" class="verMas">
+    <ion-label class="text_amplia"> Amplia tu experiencia </ion-label>
+    <ion-label
+      (click)="onViewMoreClick()"
+      [routerLink]="['/tickets', ticketId, 'customise']"
+      class="text_ver_mas"
+    >
+      Ver más
+    </ion-label>
+  </ion-row>
+</ion-grid>
+<div class="ion-padding div_grid">
+  <ion-grid>
+    <ion-row size="12" class="ion-padding" class="row_images_display">
+      <ion-col
+        size="4"
+        *ngFor="let advertisement of advertisementList$ | async; index as i"
+      >
+        <ion-card>
+          <ion-img
+            (click)="onFeaturedClick(advertisement, i)"
+            [routerLink]="['/tickets', ticketId, 'customise']"
+            class="img_expe"
+            [src]="advertisement.image"
+          ></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

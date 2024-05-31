@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-buttons routerLink="/profile" slot="start">
+        <ion-icon class="icon_x ion-padding" name="arrow-back-outline"></ion-icon>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title *ngIf="litle_text" class="ion-text-center ion-custom-title">Datos básicos</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [scrollEvents]="true" (ionScroll)="handleScroll($any($event))" class="ion-no-padding">
+  <ion-label [ngClass]="{'title_show':!litle_text, 'title_no_show': litle_text}" class="ion-padding text_title_header">Datos básicos</ion-label>
+  <p class="parraf_p">Estos datos estarán asociados a tus experiencias.</p>
+  <form [formGroup]="profileForm">
+    <ion-list mode="md">
+      <ion-item class="datos_basicos" lines="none">
+        <ion-input label="Nombre" label-placement="floating" formControlName="name" [maskito]="onlyLettersMask"
+          [maskitoElement]="maskPredicate"></ion-input>
+      </ion-item>
+      <ion-item class="datos_basicos" lines="none">
+        <ion-input label="Apellidos" label-placement="floating" formControlName="surname1" [maskito]="onlyLettersMask"
+          [maskitoElement]="maskPredicate"></ion-input>
+      </ion-item>
+      <ion-item class="datos_basicos" lines="none">
+        <ion-input label="DNI / NIF / NIE" label-placement="floating" formControlName="fiscalId"
+          [maskito]="fiscalIdMask" [maskitoElement]="maskPredicate"></ion-input>
+      </ion-item>
+      <ion-item class="datos_basicos" lines="none">
+        <ion-input label="Fecha de nacimiento" label-placement="floating" formControlName="birthDate"
+          [maskito]="birthMask" [maskitoElement]="maskPredicate"></ion-input>
+      </ion-item>
+      <ion-item class="datos_basicos" lines="none">
+        <ion-input label="Teléfono" label-placement="floating" formControlName="phone" [maskito]="phoneMask"
+          [maskitoElement]="maskPredicate"></ion-input>
+      </ion-item>
+      <!--<ion-item class="datos_basicos">
+      <ion-input
+        class="custom"
+        label="Email"
+        label-placement="floating"
+        fill="solid"
+        formControlName="emailPublic"
+        [maskito]="phoneMask"
+        [maskitoElement]="maskPredicate"
+      ></ion-input>
+    </ion-item>-->
+    </ion-list>
+  </form>
+  <ion-button (click)="logout()" shape="round" fill="clear" color="danger" expand="block">Cerrar
+    sesión</ion-button>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button class="btn_profile" [disabled]="!profileForm.dirty || !profileForm.valid" (click)="updateProfile()"
+      shape="round" expand="block">Guardar</ion-button>
+  </ion-toolbar>
+</ion-footer>

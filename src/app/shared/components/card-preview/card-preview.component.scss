@@ -1,0 +1,62 @@
+.card-preview {
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0;
+
+  ion-card-header {
+    text-align: center;
+  }
+
+  ion-card-content {
+    padding: 0;
+  }
+
+  ion-img {
+    width: 45px; // Adjust the size of the card logo as needed
+    height: 45px;
+  }
+}
+
+.card-number {
+  color: #F2F2F2;
+}
+
+ion-radio {
+  --border-radius: 8px;
+  --inner-border-radius: 8px;
+  --color: #F2F2F2;
+}
+
+.btn_eliminar {
+  color: rgba(246, 90, 173, 1);
+}
+
+ion-thumbnail {
+  background-color: white;
+  border-radius: 5px;
+
+  ion-grid {
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  ion-row {
+    height: 100%;
+  }
+
+  ion-col {
+    padding: 0;
+  }
+
+}
+
+ion-checkbox {
+  border: 1px solid white;
+  border-radius: 50%;
+}
+
+span.card-dots {
+  font-size: 24px;
+  font-weight: 600;
+}
